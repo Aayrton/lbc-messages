@@ -1,0 +1,16 @@
+@import "../../styles/_colors.scss";
+
+.MessageCard {
+  width: 100%;
+  height: 15rem;
+  background-color: white;
+  padding: 4rem;
+  border-radius: 3rem;
+
+  .MessageCard-text {
+  }
+
+  .MessageCard-date {
+    color: $lbc-dark-grey;
+  }
+}
