@@ -1,17 +1,20 @@
-export const GET_MESSAGES = "GET_MESSAGES";
-export const GET_MESSAGES_FAILURE = "GET_MESSAGES_FAILURE";
-export const GET_MESSAGES_SUCCESS = "GET_MESSAGES_SUCCESS";
+export const GET_MESSAGES = 'GET_MESSAGES';
+export const GET_MESSAGES_FAILURE = 'GET_MESSAGES_FAILURE';
+export const GET_MESSAGES_SUCCESS = 'GET_MESSAGES_SUCCESS';
 
-export const ADD_MESSAGE = "ADD_MESSAGE";
-export const ADD_MESSAGE_SUCCESS = "ADD_MESSAGE_SUCCESS";
-export const ADD_MESSAGE_FAILURE = "ADD_MESSAGE_FAILURE";
+export const ADD_MESSAGE = 'ADD_MESSAGE';
+export const ADD_MESSAGE_SUCCESS = 'ADD_MESSAGE_SUCCESS';
+export const ADD_MESSAGE_FAILURE = 'ADD_MESSAGE_FAILURE';
 
 export interface Message {
   text: string;
   private?: boolean;
+  date: number;
+}
+export interface FormattedMessage {
+  text: string;
   date: string;
 }
-
 export interface GetMessagesAction {
   type: typeof GET_MESSAGES;
 }
@@ -28,7 +31,6 @@ export interface GetMessagesFailureAction {
 
 export interface AddMessageAction {
   type: typeof ADD_MESSAGE;
-  message: Message;
 }
 
 export interface AddMessageSuccessAction {

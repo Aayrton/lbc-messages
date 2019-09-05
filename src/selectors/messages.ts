@@ -1,18 +1,21 @@
-import { createSelector } from "reselect";
-import { State } from "types/messages";
-// import moment = require("moment");
+import { createSelector } from 'reselect';
+import { State, FormattedMessage } from 'types/messages';
+import moment from 'moment';
 
-// const messagesSelector = (state: State) => state.messages;
-// export const formattedMessagesSelector = createSelector(
-//   messagesSelector,
-//   messages => {
-//     const formattedMessages = messages.map((message) => {
-//       if(message.private) {
-//         return null
-//       }
-//       return {...message, date: moment(message.date) }
-//     })
+const messagesSelector = (state: State) => state.messages;
+export const formattedMessagesSelector = createSelector(
+  messagesSelector,
+  (messages): FormattedMessage[] => {
+    moment.locale('fr');
+    const formattedMessages = messages.filter(message => !message.private);
 
-//     return formattedMessages.sort((current, next) => moment(previous.date))
-//   }
-// );
+    return formattedMessages
+      .sort((current, next) =>
+        moment(current.date).isBefore(next.date) ? -1 : 1
+      )
+      .map(message => ({
+        ...message,
+        date: moment.unix(message.date).format('LLLL')
+      }));
+  }
+);

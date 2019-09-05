@@ -5,10 +5,16 @@ import {
   GetMessagesAction,
   GetMessagesSuccessAction,
   GetMessagesFailureAction,
-  Message
+  Message,
+  ADD_MESSAGE,
+  AddMessageAction,
+  ADD_MESSAGE_FAILURE,
+  ADD_MESSAGE_SUCCESS,
+  AddMessageSuccessAction,
+  AddMessageFailureAction
 } from '../types/messages';
 import { Dispatch } from 'react';
-import { getMessages } from '../api';
+import { getMessages, createMessage } from '../api';
 
 export const fetchMessages = () => async (
   dispatch: Dispatch<
@@ -29,6 +35,30 @@ export const fetchMessages = () => async (
   } catch (e) {
     return dispatch({
       type: GET_MESSAGES_FAILURE,
+      error: e
+    });
+  }
+};
+
+export const addMessages = (message: Message) => async (
+  dispatch: Dispatch<
+    AddMessageSuccessAction | AddMessageFailureAction | AddMessageAction
+  >
+) => {
+  dispatch({
+    type: ADD_MESSAGE
+  });
+
+  try {
+    const messages = await createMessage(message);
+
+    return dispatch({
+      type: ADD_MESSAGE_SUCCESS,
+      payload: messages
+    });
+  } catch (e) {
+    return dispatch({
+      type: ADD_MESSAGE_FAILURE,
       error: e
     });
   }

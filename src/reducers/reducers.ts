@@ -4,7 +4,8 @@ import {
   MessagesActions,
   State,
   GET_MESSAGES_FAILURE,
-  ADD_MESSAGE
+  ADD_MESSAGE,
+  ADD_MESSAGE_SUCCESS
 } from '../types/messages';
 
 const initialState: State = {
@@ -29,6 +30,8 @@ const MessagesReducer = (
 
     case ADD_MESSAGE:
       return { ...state, error: '', loading: true };
+    case ADD_MESSAGE_SUCCESS:
+      return { ...state, error: '', messages: action.payload, loading: true };
     default:
       return state;
   }

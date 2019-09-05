@@ -1,34 +1,67 @@
-@import "./styles/_colors.scss";
+@import './styles/_colors.scss';
 
 .App {
   text-align: center;
+  background-color: $lbc-grey;
+  overflow: hidden;
 
-  .App-logo {
-    margin-top: 3rem;
-    width: 20rem;
-  }
-
-  .App-header {
-    background-color: $lbc-grey;
-    min-height: 100vh;
+  .App-form {
+    padding: 3rem;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
+
+    .App-form-field {
+      width: 100%;
+      height: 3rem;
+    }
+    .App-form-private {
+      margin-top: 1rem;
+    }
+    .App-form-submit {
+      background-color: $lbc-orange;
+      border-radius: 0.4rem;
+      border-color: $lbc-orange;
+      color: #fff;
+      height: 2.5rem;
+      width: 10rem;
+      font-size: 1rem;
+      font-weight: 600;
+      margin-top: 1rem;
+      cursor: pointer;
+
+      &:disabled,
+      &[disabled] {
+        color: $lbc-grey;
+        background-color: darken($lbc-orange, 10%);
+        border-color: darken($lbc-orange, 10%);
+        cursor: not-allowed;
+      }
+    }
   }
 
-  .App-link {
-    color: #61dafb;
+  .App-logo {
+    margin: 3rem 0;
+    width: 20rem;
+  }
+
+  .App-messageContainer {
+    padding: 3rem;
   }
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
+@media (min-width: 1025px) {
+  .App {
+    .App-form {
+      width: 37rem;
+      margin: 0 auto 4rem auto;
+      padding: 0;
+    }
+
+    .App-messageContainer {
+      width: 37rem;
+      margin: 0 auto;
+      padding: 0;
+    }
   }
 }
