@@ -1,4 +1,4 @@
-@import '../../styles/_colors.scss';
+@import "../../styles/_colors.scss";
 
 .MessageCard {
   display: flex;
@@ -10,9 +10,9 @@
   border-radius: 0.8rem;
   margin-bottom: 3rem;
   padding: 1rem;
-
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.3);
   .MessageCard-date {
-    color: $lbc-dark-grey;
-    margin-bottom: 1rem;
+    color: darken($lbc-dark-grey, 20);
+    margin-top: 1rem;
   }
 }

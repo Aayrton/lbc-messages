@@ -1,17 +1,17 @@
-import React, { useState, useRef } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import logo from './images/lbc-logo.png';
-import { Message, State } from 'types/messages';
-import MessageCard from 'components/MessageCard';
-import { formattedMessagesSelector } from 'selectors/messages';
-import { addMessages } from 'actions/messages';
+import React, { useState, useRef } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import moment from "moment";
+import MessageCard from "components/MessageCard";
+import { formattedMessagesSelector } from "selectors/messages";
+import { addMessages } from "actions/messages";
+import logo from "./images/lbc-logo.png";
 
-import './App.scss';
+import "./App.scss";
 
 const App: React.FC = () => {
   const dispatch = useDispatch();
   const messages = useSelector(formattedMessagesSelector);
-  const [textFieldValue, setTextFieldValue] = useState('');
+  const [textFieldValue, setTextFieldValue] = useState("");
   const [privateFieldValue, setPrivateFieldValue] = useState(false);
   const inputEl = useRef<HTMLInputElement>(null);
 
@@ -21,19 +21,21 @@ const App: React.FC = () => {
   };
 
   const handleSubmit = (): void => {
-    const date = new Date();
-    console.log(date);
+    const date = moment().format("X");
     dispatch(
       addMessages({
         text: textFieldValue,
-        date: date.getTime(),
+        date: parseInt(date, 10),
         private: privateFieldValue
       })
     );
 
     if (inputEl && inputEl.current) {
-      inputEl.current.value = '';
+      inputEl.current.value = "";
     }
+
+    setTextFieldValue("");
+    setPrivateFieldValue(false);
   };
 
   return (
@@ -52,7 +54,8 @@ const App: React.FC = () => {
           <input
             type="checkbox"
             name="private"
-            onClick={() => setPrivateFieldValue(!privateFieldValue)}
+            checked={privateFieldValue}
+            onChange={() => setPrivateFieldValue(!privateFieldValue)}
           />
           Privé
         </div>
