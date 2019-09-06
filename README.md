@@ -1,5 +1,7 @@
 <h1 align="center">Welcome to Leboncoin Messages App 👋</h1>
 
+<em>Note: L'utilisation de redux n'était pas nécéssaire/est overkill. Je l'ai utilisé ici afin de démontrer mes connaissances de cette lib utilisée tres souvent dans des projets plus conséquents.</em>
+
 ## Install
 
 You may have [NodeJS](https://nodejs.org/en/) and [Yarn](https://yarnpkg.com/fr/) installed on your machine.
