@@ -31,7 +31,7 @@ const MessagesReducer = (
     case ADD_MESSAGE:
       return { ...state, error: '', loading: true };
     case ADD_MESSAGE_SUCCESS:
-      return { ...state, error: '', messages: action.payload, loading: true };
+      return { ...state, error: '', messages: action.payload, loading: false };
     default:
       return state;
   }
