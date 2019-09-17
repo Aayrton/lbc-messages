@@ -19,7 +19,7 @@ yarn
 In development, use this command to have hot module replacement:
 
 ```sh
-yarn dev
+yarn start
 ```
 
 <br>
